@@ -33,7 +33,7 @@ $( document ).ready(function() {
         let searchTerms = $(this).attr('class').replace('grid-item','');
         searchTerms += $(this).text().trim();
     
-        console.log("Query: " + searchRegex ? searchTerms.match( searchRegex ) : true);
+        // console.log("Query: " + searchRegex ? searchTerms.match( searchRegex ) : true);
         return searchRegex ? searchTerms.match( searchRegex ) : true;
     }
 
