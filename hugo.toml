@@ -1,7 +1,6 @@
 baseURL = 'https://cael.li/hugo-demo/'
 languageCode = 'en-us'
 title = 'Hugo Site'
-canonifyURLs = true 
 
 [taxonomies]
 # Use singular rather than plural for default taxonomies
