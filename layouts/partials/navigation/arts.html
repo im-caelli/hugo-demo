@@ -1,0 +1,25 @@
+ <!-- 
+    Category Navigation 
+    * filterCategory('<category>') determines what suggested words appear in the secondary navigation
+    * data-filter="<.category>" determines the category to filter the lessons
+-->
+<ul class="lesson-nav lesson-nav-category button-group" data-filter-group="category">
+    <li class="filter-category is-checked"><a href="javascript:void(0)" class="button reset" onclick="filterCategory('all')" data-filter="*">All</a></li>
+    <li class="filter-category"><a href="javascript:void(0)" class="button" onclick="filterCategory('painting')" data-filter=".painting">Painting</a></li>
+    <li class="filter-category"><a href="javascript:void(0)" class="button" onclick="filterCategory('drawing')" data-filter=".drawing">Drawing</a></li>
+    <li class="filter-category"><a href="javascript:void(0)" class="button" onclick="filterCategory('tactile')" data-filter=".tactile">Tactile</a></li>
+</ul>
+
+<!-- 
+    Tag Navigation 
+    * filter-tag-<category> is what associates the navigation item with the category navigation
+    * Where <category> would match the value set for filterCategory('<category>')
+    * data-filter="<.tag>"
+-->
+<ul class="lesson-nav lesson-nav-tags button-group" data-filter-group="tags">
+    <li class="filter-tag-painting hide is-checked"><a href="javascript:void(0)" class="button" data-filter=".acrylic" >Acrylics</a></li>
+    <li class="filter-tag-painting hide"><a href="javascript:void(0)" class="button" data-filter=".watercolor">Watercolor</a></li>
+    <li class="filter-tag-drawing hide"><a href="javascript:void(0)" class="button" data-filter=".marker">Marker</a></li>
+    <li class="filter-tag-drawing hide"><a href="javascript:void(0)" class="button" data-filter=".pencil">Pencil</a></li>
+    <li class="filter-tag-tactile hide"><a href="javascript:void(0)" class="button" data-filter=".clay">Clay</a></li>
+</ul>

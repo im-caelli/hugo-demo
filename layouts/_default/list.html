@@ -1,0 +1,29 @@
+{{ define "list" }}
+    <div class="lesson my-5 container">
+        <!-- Search Filter -->
+        {{ partial "search" . }}
+         
+        <!-- Navigation -->
+        {{ $section_type := printf .Section }}
+        {{ $partial_path := printf "%s%s" "navigation/" $section_type }}
+        {{ $partial_file := printf "partials/navigation/%s.html" .Section}}
+
+
+        {{ if eq .Section $section_type }}
+            {{ if templates.Exists $partial_file }} 
+                {{ partial $partial_path . }}
+            {{ else }}
+                <div class="alert alert-warning" role="alert">
+                    Create a navigation specific to this curriculum under <code>layouts/partials/navigation/curriculum-name.html</code>
+                </div>
+            {{ end }}
+        {{ end }}
+
+        
+        <ul class="lesson-grid">
+            {{ range .Paginator.Pages }}
+                {{ partial "item" . }}
+            {{ end }}
+        </ul>
+    </div>
+{{ end }}

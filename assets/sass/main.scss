@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+// Colours
+$light-gray: #F2F2F3;
+$navy: #001d77;
+$orange: #ff6319;
+
+// Utility
+$gutter: 1rem;
+
+body {
+    font-family: Montserrat, sans-serif;
+}
+
+h1 {
+    color: $navy;
+}
+
+.input-group {
+    width: 500px;
+    margin: auto;
+}
+
+.lesson {
+
+    &-track {
+        width: 100%;
+        padding: $gutter;
+  
+       .lesson-grid {
+            width: 100%;
+            overflow-x: scroll;
+            scroll-snap-type: x proximity;
+            flex-wrap: nowrap;
+            justify-content:unset;
+
+            li {
+                margin-right: 1.5rem;
+
+                &.more-link {
+                    display: flex;
+
+                    .lesson-item {
+                        background: $orange;
+                        color: #F2F2F3;
+                        border-radius: 50%;
+
+                        &:hover {
+                            background:darken($color: $orange, $amount: 10%);
+                        }
+                    }
+
+                    .title {
+                        font-size: 2rem;
+                        text-transform: uppercase;
+                        color: white;
+                    }
+
+                    
+                }
+            }
+       }
+
+       h2 {
+        color: $navy;
+        font-weight: bold;
+       }
+
+    }
+
+    // Grid
+    &-grid {
+        list-style: none;
+        margin:0;
+        padding:0;
+        // display: flex;
+        // flex-wrap: wrap;
+        justify-content: space-between;
+        // scrollbar-width: none;
+        // margin-bottom: 0;
+        // padding-bottom: 0;
+        min-height: 500px;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        li {
+            display: block;
+            border-radius: .5rem;
+            margin: .5rem;
+            margin-bottom: 1rem;
+            &.hide {
+                display: none;
+            }
+            
+        }
+
+        .lesson-item {
+            text-decoration: none;
+            color: $orange;
+            display: block;
+            width: 200px;
+            min-height: 200px;
+            padding: 1rem;
+            border-radius: .5rem;
+            border: 1px solid $light-gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            &:hover {
+                background-color: $orange;
+                color: white;
+
+                .icon {
+                    filter: brightness(0) invert(1);
+                }
+            }
+
+            .title {
+                margin: .5rem;
+                font-size: 1rem;
+                // line-height: 1;
+                text-align: center;
+                font-weight: 700;
+            }
+
+            .icon {
+                width: 100px;
+            }
+        }
+    }
+
+    // Navigation
+    &-nav {
+
+        &-container {
+            margin: 3rem 0;
+        }
+
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+
+        li {
+            margin-right: .5rem;
+
+            &.hide {
+                display: none;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            display: block;
+            background: $orange;
+            border-radius: 1.5rem;
+            padding: .25rem 1rem;
+            color:$light-gray;
+
+            &:hover {
+                opacity: .9;
+            }
+        }
+
+        &-category {
+            font-size: 1.5rem;
+        }
+
+        &-tags {
+            min-height: 32px;
+        }
+    }
+}
+
+.all-lessons-button {
+    background-color: $orange;
+    padding: .5rem;
+    color: $light-gray;
+    text-decoration: none;
+    border-radius: 5px 0 0 5px;
+    margin-left: 1rem;
+    position: relative;
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: -17px;
+        top: 0;
+        width: 0px;
+        height: 0px;
+        border-style: solid;
+        border-width: 18px 0 17px 17px;
+        border-color: transparent transparent transparent $orange;
+        transform: rotate(0deg);
+    }
+
+    &:hover {
+        background:darken($color: $orange, $amount: 10%);
+
+         &::after {
+            border-color: transparent transparent transparent darken($color: $orange, $amount: 10%);
+         }
+    }
+
+   
+}
+
+
+// OVERIDES
+@use "_overrides";
