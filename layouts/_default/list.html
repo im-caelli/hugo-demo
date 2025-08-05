@@ -8,7 +8,6 @@
         {{ $partial_path := printf "%s%s" "navigation/" $section_type }}
         {{ $partial_file := printf "partials/navigation/%s.html" .Section}}
 
-
         {{ if eq .Section $section_type }}
             {{ if templates.Exists $partial_file }} 
                 {{ partial $partial_path . }}
@@ -18,7 +17,6 @@
                 </div>
             {{ end }}
         {{ end }}
-
         
         <ul class="lesson-grid">
             {{ range .Paginator.Pages }}
