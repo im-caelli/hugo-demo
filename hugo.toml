@@ -11,3 +11,6 @@ type = "type"
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+[params]
+  base_path = '/hugo-demo'
