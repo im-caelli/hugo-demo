@@ -5,67 +5,68 @@ $light-gray: #F2F2F3;
 $navy: #001d77;
 $orange: #ff6319;
 
-// Utility
-$gutter: 1rem;
+// Mixins
+@mixin btn-pill {
+    border-radius: 1.5rem;
+    padding: .25rem 1rem;
+}
 
 body {
     font-family: Montserrat, sans-serif;
 }
 
+
+// ----- Text formatting
 h1 {
-    color: $navy;
+    text-align: center;
 }
 
-.input-group {
-    width: 500px;
-    margin: auto;
+.highlight {
+    color: $orange;
 }
 
+// ----- Lesson
 .lesson {
 
-    &-track {
-        width: 100%;
-        padding: $gutter;
-  
-       .lesson-grid {
-            width: 100%;
-            overflow-x: scroll;
-            scroll-snap-type: x proximity;
-            flex-wrap: nowrap;
-            justify-content:unset;
+    // Navigation
+    &-nav {
+        .nav-item.hide {
+            display: none;
+        }
 
-            li {
-                margin-right: 1.5rem;
+        .nav-link {
+            background: $orange;
+            color:$light-gray;
+            margin: .5rem .25rem;
+            @include btn-pill();
 
-                &.more-link {
-                    display: flex;
+            &:hover {
+                opacity: .9;
+            }
+        }
 
-                    .lesson-item {
-                        background: $orange;
-                        color: #F2F2F3;
-                        border-radius: 50%;
+        // &-category {
+        //     font-size: 1.5rem;
+        // }
 
-                        &:hover {
-                            background:darken($color: $orange, $amount: 10%);
-                        }
-                    }
+        &-tags {
+            min-height: 32px;
 
-                    .title {
-                        font-size: 2rem;
-                        text-transform: uppercase;
-                        color: white;
-                    }
+            .nav-link {
+                background: white;
+                border: 1px solid $orange;
+                color: $orange;
 
-                    
+                &:hover {
+                    background: $light-gray;
                 }
             }
-       }
+        }
+    }
 
-       h2 {
-        color: $navy;
-        font-weight: bold;
-       }
-
+    // Search
+    &-search {
+        display: flex;
     }
 
     // Grid
@@ -73,146 +74,45 @@ h1 {
         list-style: none;
         margin:0;
         padding:0;
-        // display: flex;
-        // flex-wrap: wrap;
-        justify-content: space-between;
-        // scrollbar-width: none;
-        // margin-bottom: 0;
-        // padding-bottom: 0;
-        min-height: 500px;
+    }
 
-        &::-webkit-scrollbar {
-            display: none;
-        }
+    &-item {
+        text-decoration: none;
+        color: $orange;
+        display: block;
+        width: 200px;
+        min-height: 200px;
+        padding: 1rem;
+        margin: 0 .5rem 1rem .5rem;
+        border-radius: .5rem;
+        border: 1px solid $light-gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
 
-        li {
-            display: block;
-            border-radius: .5rem;
-            margin: .5rem;
-            margin-bottom: 1rem;
-            &.hide {
-                display: none;
-            }
-            
-        }
-
-        .lesson-item {
-            text-decoration: none;
-            color: $orange;
-            display: block;
-            width: 200px;
-            min-height: 200px;
-            padding: 1rem;
-            border-radius: .5rem;
-            border: 1px solid $light-gray;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-
-            &:hover {
-                background-color: $orange;
-                color: white;
-
-                .icon {
-                    filter: brightness(0) invert(1);
-                }
-            }
-
-            .title {
-                margin: .5rem;
-                font-size: 1rem;
-                // line-height: 1;
-                text-align: center;
-                font-weight: 700;
-            }
+        &:hover {
+            background-color: $orange;
+            color: white;
 
             .icon {
-                width: 100px;
-            }
-        }
-    }
-
-    // Navigation
-    &-nav {
-
-        &-container {
-            margin: 3rem 0;
-        }
-
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1rem;
-
-        li {
-            margin-right: .5rem;
-
-            &.hide {
-                display: none;
+                filter: brightness(0) invert(1);
             }
         }
 
-        a {
-            text-decoration: none;
-            display: block;
-            background: $orange;
-            border-radius: 1.5rem;
-            padding: .25rem 1rem;
-            color:$light-gray;
-
-            &:hover {
-                opacity: .9;
-            }
+        .title {
+            margin: .5rem;
+            font-size: 1rem;
+            // line-height: 1;
+            text-align: center;
+            font-weight: 700;
         }
 
-        &-category {
-            font-size: 1.5rem;
-        }
-
-        &-tags {
-            min-height: 32px;
+        .icon {
+            width: 100px;
         }
     }
 }
-
-.all-lessons-button {
-    background-color: $orange;
-    padding: .5rem;
-    color: $light-gray;
-    text-decoration: none;
-    border-radius: 5px 0 0 5px;
-    margin-left: 1rem;
-    position: relative;
-
-    &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        right: -17px;
-        top: 0;
-        width: 0px;
-        height: 0px;
-        border-style: solid;
-        border-width: 18px 0 17px 17px;
-        border-color: transparent transparent transparent $orange;
-        transform: rotate(0deg);
-    }
-
-    &:hover {
-        background:darken($color: $orange, $amount: 10%);
-
-         &::after {
-            border-color: transparent transparent transparent darken($color: $orange, $amount: 10%);
-         }
-    }
-
-   
-}
-
 
 // OVERIDES
 @use "_overrides";
