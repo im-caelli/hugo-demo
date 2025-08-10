@@ -23,8 +23,25 @@ $( document ).ready(function() {
         };
     }
 
+    // --- Filters
 
-    // Filters
+     // init Isotope
+    var $grid = $('.grid').isotope({
+        itemSelector: '.grid-item',
+        layoutMode: 'cellsByRow'
+    });
+
+    // URL parameters on load
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlCategory = urlParams.get('category');   
+
+    // Filter by parameter in the url (ie, ?category=painting)
+    if (urlCategory) {
+        $grid.isotope({ filter: '.' + urlCategory });
+        filterCategory(urlCategory);
+    } 
+    
+    // Search
     var filters = {};
     var searchRegex;
 
@@ -36,18 +53,17 @@ $( document ).ready(function() {
         // console.log("Query: " + searchRegex ? searchTerms.match( searchRegex ) : true);
         return searchRegex ? searchTerms.match( searchRegex ) : true;
     }
+   
+    var $searchFilter = $('#search-filter').keyup( debounce(
+        function() {
+            searchRegex = new RegExp( $searchFilter.val(), 'i' );
+            $grid.isotope({
+                filter: search
+            });
+        }, 200
+    ));
 
-    // init Isotope
-    var $grid = $('.grid').isotope({
-        itemSelector: '.grid-item',
-        layoutMode: 'cellsByRow',
-        // filter: search
-    });
-
-    // Filters
-    var filters = {};
-    var searchRegex;
-
+    // Navigation
     $('.filters').on( 'click', '.button', function( event ) {
         var $button = $( event.currentTarget );
         // get group key
@@ -64,7 +80,7 @@ $( document ).ready(function() {
             // If tag, show tagged within category
             var filterValue = concatValues( filters );
         }
-   
+
         // set filter for Isotope
         $grid.isotope({ filter: filterValue });
     });
@@ -73,21 +89,11 @@ $( document ).ready(function() {
     $('.button-group').each( function( i, buttonGroup ) {
         var $buttonGroup = $( buttonGroup );
         $buttonGroup.on( 'click', '.button', function( event ) {
-            $buttonGroup.find('.filter-category').removeClass('is-checked');
+            $buttonGroup.find('.nav-item a.nav-link').removeClass('is-checked');
             var $button = $( event.currentTarget );
             $button.addClass('is-checked');
         });
     });
-
-    // Search Filters
-    var $searchFilter = $('#search-filter').keyup( debounce(
-        function() {
-            searchRegex = new RegExp( $searchFilter.val(), 'i' );
-            $grid.isotope({
-                filter: search
-            });
-        }, 200
-    ));
 
     // Reset
     $(".reset").click(function() {
@@ -103,28 +109,6 @@ $( document ).ready(function() {
 
 });
 
-
-// Filter by Category
-function filterGridItemsByCat(category) {
-    let lesson_list_item = document.querySelectorAll(".lesson-grid > li");
-    let filter = category.toUpperCase();
-    
-    for (let i = 0; i < lesson_list_item.length; i++) {
-        let lesson_item = lesson_list_item[i].getElementsByTagName("a")[0];
-
-        if (category == "all") {
-             lesson_list_item[i].classList.remove("hide");
-        } else {
-            if (lesson_item.getAttribute("data-category").toUpperCase().includes(filter)) {
-                lesson_list_item[i].classList.remove("hide");
-            } else {
-                lesson_list_item[i].classList.add("hide");
-            }
-        }
-    }
-    
-}
-
 // Category Filter
 function filterCategory(category) {
 
@@ -139,8 +123,6 @@ function filterCategory(category) {
             list_nav_item_list[i].classList.add('hide');
         }
     }
-
-    // filterGridItemsByCat(category);
 }
 
 // Filter by Tag
