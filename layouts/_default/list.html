@@ -2,7 +2,9 @@
 
 {{ partial "header" . }}
 
-<div class="my-5 container-md">
+{{ $section_type := printf .Section }}
+
+<div class="my-5 container-md layout-{{ $section_type }}">
     <h1>All <span class="highlight">{{ .Title }}</span> Lessons</h1>
 
     <div class="lesson my-5">
@@ -13,7 +15,7 @@
             
             <!-- Navigation -->
             <div class="my-3">
-                {{ $section_type := printf .Section }}
+      
                 {{ $partial_path := printf "%s%s" "navigation/" $section_type }}
                 {{ $partial_file := printf "partials/navigation/%s.html" .Section}}
 
