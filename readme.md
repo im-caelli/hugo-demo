@@ -176,13 +176,13 @@ tags = ["charcoal"]
 - A navigation template includes two lists (represented by a `<ul>` tag): one for category, one for tags
 - You can add an list item by duplicating an entire `<li>` line and modifying it. For Example:
   - For **categories**, you would need to modify:
-    - 1. `onclick="filterCategory('tactile')"` where `tactile` is the category specified. This determines which tags in the tag navigation to show.
-    - 2. `data-filter=".tactile"` where `tactile` is the category specified. This determines the lessons to filter. The `.` is important.
-    - 3. The word `Tactile` in between the `<a>` represents the title displayed on the button
+    1. `onclick="filterCategory('tactile')"` where `tactile` is the category specified. This determines which tags in the tag navigation to show.
+    1. `data-filter=".tactile"` where `tactile` is the category specified. This determines the lessons to filter. The `.` is important.
+    2. The word `Tactile` in between the `<a>` represents the title displayed on the button
   - For **tags**, you would need to modify:
-    - 1. `filter-tag-tactile` where `-tactile` is the category specified. It needs to match the string in #1 of the category example above. This determines if it gets displayed when the tactile category is active.
-    - 2. `data-filter=".clay"` where `clay` is the tag specified. This determines the lessons to filter. The `.` is important
-    - 3. The word `Clay` in between the `<a>` represents the title displayed on the button
+    1. `filter-tag-tactile` where `-tactile` is the category specified. It needs to match the string in #1 of the category example above. This determines if it gets displayed when the tactile category is active.
+    2. `data-filter=".clay"` where `clay` is the tag specified. This determines the lessons to filter. The `.` is important
+    3. The word `Clay` in between the `<a>` represents the title displayed on the button
 - The categories / tags should match what is specified in the content file.
 
 ### Deployment
