@@ -2,6 +2,17 @@
 
 SSG page for filterable item listings
 
+- [Lesson Listings](#lesson-listings)
+  - [Project](#project)
+    - [Tools](#tools)
+    - [Cheatsheet](#cheatsheet)
+    - [Scaffolding](#scaffolding)
+  - [Updating the Site](#updating-the-site)
+    - [Content](#content)
+    - [Structure](#structure)
+      - [Updating the Styles](#updating-the-styles)
+      - [Creating / Updating the Navigation](#creating--updating-the-navigation)
+    - [Deployment](#deployment)
 
 
 ## Project
