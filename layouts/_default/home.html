@@ -1,9 +1,11 @@
 {{ partial "header" . }}
 
 <div class="my-5 container">
-    <h1>All Lessons</h1>
+    <h1 class="text-start">Lessons Listing</h1>
 
-    <p>This is the home page. Here are the paths avalable to be used for the google site embeds:</p>
+    <p>This is the root. There's no content here. </p>
+    
+    <p>Here are the paths avalable to be used for the google site embeds:</p>
 
     <ul>
         {{ $sections := where (.Site.Pages) "Kind" "section" }}

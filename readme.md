@@ -117,14 +117,13 @@ tags = ["charcoal"]
    -  This is loaded on top of the base so you can change things without breaking anything
 -  Layouts
    -  The defaults has been made more generic. Content specific mark up has been separated and gets progmatically called
-   -  The only markup that you would need to interact with in relation to content updates is the navigation (categories, tag suggestion)
+   -  You can make edits as necessary to achieve look and feel, but the only markup that you would need to interact with in relation to content updates is the navigation (categories, tag suggestion)
    -  Each curriculum (section) would need its specific navigation matching the section name. Ie. the `/arts` page will render `navigation/arts.html` which contains the art categories and tags
 
 #### Updating the Styles
 
 - You can google any css resource to help you achieve a specific look and simply dump any styles you want in `_overrides.scss`
 - You can use `.layout-<section name>` as a selector if you want variance between each "curriculum"
-
 
 #### Creating / Updating the Navigation
 
@@ -164,11 +163,21 @@ tags = ["charcoal"]
 ```
 
 - A navigation template includes two lists (represented by a `<ul>` tag): one for category, one for tags
-- You can add an list item by duplicating an entire `<li>` line and modifying it
-
-
-
-
-
+- You can add an list item by duplicating an entire `<li>` line and modifying it. For Example:
+  - For **categories**, you would need to modify:
+    - 1. `onclick="filterCategory('tactile')"` where `tactile` is the category specified. This determines which tags in the tag navigation to show.
+    - 2. `data-filter=".tactile"` where `tactile` is the category specified. This determines the lessons to filter. The `.` is important.
+    - 3. The word `Tactile` in between the `<a>` represents the title displayed on the button
+  - For **tags**, you would need to modify:
+    - 1. `filter-tag-tactile` where `-tactile` is the category specified. It needs to match the string in #1 of the category example above. This determines if it gets displayed when the tactile category is active.
+    - 2. `data-filter=".clay"` where `clay` is the tag specified. This determines the lessons to filter. The `.` is important
+    - 3. The word `Clay` in between the `<a>` represents the title displayed on the button
+- The categories / tags should match what is specified in the content file.
 
 ### Deployment
+
+- The deployment will be handled with Github workflows / action
+- It will build the site automatically each time there is a push made against the main branch.
+- For content updates, you can make changes directly on GitHub
+- For structural changes where you need to develop locally, you would need to use git to push/pull changes
+  - The public and resource folders are no longer tracked
