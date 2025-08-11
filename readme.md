@@ -2,6 +2,8 @@
 
 SSG page for filterable item listings
 
+
+
 ## Project
 
 This project uses hugo to generate a static site. Git will be used to manage the code and deploy the site.
@@ -53,14 +55,57 @@ root
 
 Static sites / end presentation is the combination of combine both, but there's two separate things to keep in mind when trying to update the site.
 
-- Structure
 - Content
+- Structure
 
 I've set this up in a way that separates them as much as possible to mitigate things breaking and make it easier to update. Structure is the functionality and base structure and styling is set, but you can edit them and there will be instances where you may need to make changes. Content pertains to the individual pieces of content that you should be able to manage (add/edit/remove) with minimal interaction with the structure, especially once the functionality and look and feel has been established.
 
-### Structure
+### Content
 
-#### Overview
+- Content directory is where the content is
+- Top level folders within the content directory is called a **section**
+  - This should represent your **"curriculum"**
+  - These folders would contain the files representing each **"lesson"**
+  - You can further orgranize folder categories within it, but all the lessons will show up in the singular section listing only. There are no further paginations
+- The file name could be named anything with an `.md` extentions
+- Each content file should have the following:
+
+
+**Example content:**
+
+```
++++
+draft = false
+title = 'Lesson 4 - Drawing'
+link = "#"
+image = "/images/icon.png"
+type = "arts"
+category = ["drawing"]
+tags = ["charcoal"]
++++
+```
+
+- Draft: `true` or `false`
+  - `false` by default
+  - Determines if it's 'published' or not. If set to true, item will not show up.
+- Title: `'string'`
+  - Determines the title of the item
+- Link:  `url`
+  - Link to where it's suppsoe to go
+- Image: `url`
+  - Relative path to the images in the `static/images` folder
+- Type: `string`
+  - String for the section/curriculum
+  - Should match the section/ folder name
+- Category: `array`
+  - String for the category
+  - Lower case
+- Tags: `array`
+  - String for the tags
+  - Lower case
+  - Multiple tags must be comma delimited. Example `["charcoal", "pencil"]`
+  
+### Structure
 
 -  Functionality
    -  You can find the js that enables alot of the filtering functionality in `main.js`
@@ -79,14 +124,48 @@ I've set this up in a way that separates them as much as possible to mitigate th
 - You can use `.layout-<section name>` as a selector if you want variance between each "curriculum"
 
 
-#### Updating Navigation
+#### Creating / Updating the Navigation
 
-- The html templates for the navigation is located in `layouts > partials > navigation` folder. 
+- The html templates for the navigation is located in `layouts > partials > navigation` folder 
 - The template's name should match the section it will appear in. The navigation template for the `/arts` listing is `arts.html`
   - If you create a new section called `science` under `content`, you would need to create a `science.html` file under the `layouts > partials > navigation` folder
+- You can refer/copy existing templates and modify it
+  
+**Example of the navigation:**
+
+```html
+ <!-- 
+    Category Navigation 
+    * filterCategory('<category>') determines what suggested words appear in the secondary navigation
+    * data-filter="<.category>" determines the category to filter the lessons
+-->
+<ul class="nav nav-pills justify-content-center lesson-nav lesson-nav-category button-group" data-filter-group="category">
+    <li class="nav-item filter-category"><a href="javascript:void(0)" class="nav-link button reset" onclick="filterCategory('all')" data-filter="*">All</a></li>
+    <li class="nav-item filter-category"><a href="javascript:void(0)" class="nav-link button" onclick="filterCategory('painting')" data-filter=".painting">Painting</a></li>
+    <li class="nav-item filter-category"><a href="javascript:void(0)" class="nav-link button" onclick="filterCategory('drawing')" data-filter=".drawing">Drawing</a></li>
+    <li class="nav-item filter-category"><a href="javascript:void(0)" class="nav-link button" onclick="filterCategory('tactile')" data-filter=".tactile">Tactile</a></li>
+</ul>
+
+<!-- 
+    Tag Navigation 
+    * filter-tag-<category> is what associates the navigation item with the category navigation
+    * Where <category> would match the value set for filterCategory('<category>')
+    * data-filter="<.tag>"
+-->
+<ul class="nav nav-pills justify-content-center lesson-nav lesson-nav-tags button-group" data-filter-group="tags">
+    <li class="nav-item filter-tag-painting hide"><a href="javascript:void(0)" class="nav-link button" data-filter=".acrylic">Acrylics</a></li>
+    <li class="nav-item filter-tag-painting hide"><a href="javascript:void(0)" class="nav-link button" data-filter=".watercolor">Watercolor</a></li>
+    <li class="nav-item filter-tag-drawing hide"><a href="javascript:void(0)" class="nav-link button" data-filter=".marker">Marker</a></li>
+    <li class="nav-item filter-tag-drawing hide"><a href="javascript:void(0)" class="nav-link button" data-filter=".pencil">Pencil</a></li>
+    <li class="nav-item filter-tag-tactile hide"><a href="javascript:void(0)" class="nav-link button" data-filter=".clay">Clay</a></li>
+</ul>
+```
+
+- A navigation template includes two lists (represented by a `<ul>` tag): one for category, one for tags
+- You can add an list item by duplicating an entire `<li>` line and modifying it
 
 
-### Content
+
 
 
 

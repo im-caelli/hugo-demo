@@ -3,9 +3,17 @@
 <div class="my-5 container">
     <h1>All Lessons</h1>
 
+    <p>This is the home page. Here are the paths avalable to be used for the google site embeds:</p>
+
     <ul>
-        <li><a href="arts/">Arts</a></li>
-        <li><a href="curriculum/">Curriculum</a></li>
+        {{ $sections := where (.Site.Pages) "Kind" "section" }}
+        {{ range $sections  }}
+            <li>
+            <a href="{{ .Permalink }}">
+                {{ .Title }}
+            </a>
+            </li>
+        {{ end }}
     </ul>
 </div>
 
