@@ -1,6 +1,6 @@
 +++
 draft = false
-title = 'Lesson 1 - Acrylic Painting'
+title = 'Lesson 1 - Acrylic'
 link = "#"
 image = "/images/icon.png"
 type = "arts"
