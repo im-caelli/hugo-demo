@@ -66,10 +66,12 @@ I've set this up in a way that separates them as much as possible to mitigate th
 - Top level folders within the content directory is called a **section**
   - This should represent your **"curriculum"**
   - These folders would contain the files representing each **"lesson"**
-  - You can further orgranize folder categories within it, but all the lessons will show up in the singular section listing only. There are no further paginations
+  - You can further orgranize folder categories within it, but all the lessons will show up in the singular section listing only. 
+    - There are no further paginations. ie The path `/arts/painting/` doesn't exist
+    - But I added the functionality to filter the list with url parameters as well
+      - `/arts/?category=painting` will filter the page on load
 - The file name could be named anything with an `.md` extentions
 - Each content file should have the following:
-
 
 **Example content:**
 
