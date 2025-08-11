@@ -186,8 +186,10 @@ tags = ["charcoal"]
 
 ### Deployment
 
-- The deployment will be handled with Github workflows / action
+- The deployment will be handled with Github workflows / actions
+  - You can see all jobs in the **Actions** tab 
 - It will build the site automatically each time there is a push made against the main branch.
-- For content updates, you can make changes directly on GitHub
+  - Can be triggered manually wwith "Deploy Hugo site to Pages" in the Actions tab
+- You can easily make changes directly on GitHub, especially for content updates
 - For structural changes where you need to develop locally, you would need to use git to push/pull changes
   - The public and resource folders are no longer tracked
