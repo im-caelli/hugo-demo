@@ -33,7 +33,7 @@
         </div>
 
         <ul class="lesson-grid grid container-fluid">
-            {{ range .Paginator.Pages }}
+            {{ range .Site.RegularPages }}
                 {{ partial "item" . }}
             {{ end }}
         </ul>
